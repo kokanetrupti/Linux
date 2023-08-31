@@ -1,0 +1,29 @@
+Basic HTTP Req:
+----------------
+curl https://example.com
+
+To ignore SSL/TLS cert exeption:
+--------------------------------
+curl -k https://example.com
+
+To forward the HTTP request based on Location Header:
+-----------------------------------------------------
+curl -k https://example.com -L
+
+To verbose:
+-----------
+curl -k https://example.com -v
+
+Only response header:
+---------------------
+curl -k https://example.com -I
+
+Store the output/silent:
+------------------------
+curl -ks https://example.com -o filename
+curl -ks https://example.com -o /dev/null
+
+HTTP Req Methods: [GET, POST, PUT ...]
+--------------------------------------
+curl -ks https://example.com -X OPTIONS
+curl -ks https://example.com -X GET

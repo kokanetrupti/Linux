@@ -1,0 +1,66 @@
+- Directory stacks manipulation
+`````
+Navigate with 'pushd' & 'popd'
+
+eg:
+# cd test
+# cd hello
+# cd dbda
+# pwd
+/home/students/test/hello/dbda
+
+You can use the above example to navigate but you can also save where you are.
+Using pushd & popd [works with LIFO like a stack]
+
+So you can understand it like : you can put things in stack, if you try to take something back off of that stack whatever you put on last is going to be what comes back off first.
+
+# pushd ../../  [will push the current dir with pwd]
+ 
+Now you can see we have two paths in our stack
+
+/home/students/test /home/students/test/hello/dbda
+
+If i want to get back wherever i was
+
+#popd
+
+
+Another example:
+```````
+# cd /mnt/dbda/test
+
+# mkdir a b c d
+# ls
+a b c d
+
+
+# dirs [ to check the stack ]
+# dirs -v [ to check the stack with index number ]
+
+If
+
+# pushd a
+# dirs -v [new dir take position 0 and privious is on 1]
+0	/mnt/dbda/test/a
+1	/mnt/dbda/test
+
+# dirs -c [ clean ]
+
+
+NOW: we have dirs 'a' 'b' & 'c', imagine you need to access all those dirs in the same terminal frequently
+
+We need to set the stack as 
+'c' => 2
+'b' => 1
+'a' => 0
+
+# pushd c
+# pushd ../b
+# pushd ../a
+
+#dirs -v
+
+#cd ~1
+#cd ~2
+
+____________________

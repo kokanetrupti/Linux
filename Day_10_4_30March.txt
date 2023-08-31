@@ -1,0 +1,42 @@
+TARBALL
+`[.tar]
+Create:
+`
+# tar -cvf backup.tar /etc
+-c : create
+
+View:
+``
+# tar -tvf backup.tar
+-t : Tree view
+
+Extract:
+``
+# tar -xvf backup.tar
+-x : extract
+
+# tar -xvf backup.tar -C /out
+-C : create restored data
+
+
+GUNZIP:
+`
+# gzip backup.tar
+# ls 
+backup.tar.gz
+
+# gunzip backup.tar.gz
+# ls 
+backup.tar 
+
+
+TARBALL + GUNZIP:
+``````[.tgz]
+# tar -czvf backup.tgz /etc
+
+# tar -tzvf backup.tgz
+
+# tar -xzvf backup.tgz
+# tar -xzvf backup.tgz -C /data
+
+# du -sch /dir

@@ -1,0 +1,116 @@
+[0:22 pm, 30/03/2023] CDAC DHPCSA SIDDHARTHA: ob Scheduling in Linux:
+-------------------------
+cron scheduling: 
+	- To configure the Job we use an utility named as: `crontab`
+	- To run the job in future we have a service called: 
+		RedHat/CentOS 	: crond
+		Debian		: cron
+	- To schedule the Job, you need to remember 6 things:
+		* minute	[ 0-59 ]
+		* hour			[ 0-23 ]
+		* date			[ 1-31 ]
+		* month		[ 1-12 ]
+		* day			[ 0-6 ] 0 : SUNDAY
+		* Full path of command
+	
+		# date
+
+
+Let's Configure Job:
+--------------------
+
+# crontab -e
+
+-e : edit
+
+min      hr      date      month      day      echo "LOL"
+
+Save & Exit
+
+To check list of jobs:
+`````
+# crontab -l
+
+Next Step:
+---------
+Once you configure the Job, you must restart/reload the service.
+
+ systemctl:
+`````
+			- This is to manage services in RHEL/CentOS, we can perform actions like start, stop, status, restart, reload etc....
+
+
+		# systemctl <action> <service_name>
+		e.g # systemctl status crond
+
+
+
+
+=> Debian		: service
+			- This is to manage services in Debian, we can perform actions like start, stop, status, restart, reload etc....
+
+		# service <service_name> <action>
+		e.g : service cron restart
+
+
+Configure the job for normal users:
+-----------------------------------
+# crontab -e -u username
+
+min hr date month day cmd
+:wq
+#systemctl restart crond
+
+# crontab -l -e username
+
+
+Allow/Deny users to use crontab:
+---------------------------------
+Deny:
+-----
+
+# vim /etc/cron.deny
+
+username
+
+:wq
+
+
+Allow:
+------
+Create a file:
+
+	# vim /etc/cron.allow
+	 root
+	:wq
+
+--------------------------------------------
+[0:22 pm, 30/03/2023] CDAC DHPCSA SIDDHARTHA: Basic HTTP Req:
+----------------
+curl https://example.com
+
+To ignore SSL/TLS cert exeption:
+--------------------------------
+curl -k https://example.com
+
+To forward the HTTP request based on Location Header:
+-----------------------------------------------------
+curl -k https://example.com -L
+
+To verbose:
+-----------
+curl -k https://example.com -v
+
+Only response header:
+---------------------
+curl -k https://example.com -I
+
+Store the output/silent:
+------------------------
+curl -ks https://example.com -o filename
+curl -ks https://example.com -o /dev/null
+
+HTTP Req Methods: [GET, POST, PUT ...]
+--------------------------------------
+curl -ks https://example.com -X OPTIONS
+curl -ks https://example.com -X GET

@@ -1,0 +1,35 @@
+Process Substitution:
+---------------------
+
+Piping the 'stdout' of a process into the 'stdin' of another is nice but what if you need to pipe the 'stdout' of multiple commands?
+
+here you need 'Process Substitution'.
+
+NOTE: Process Substitution treated as a file and it always return file descriptor.
+
+<(cmd)
+>(cmd)
+
+To send data into process substitution using '>' & read with '<'. It use "/dev/fd/<n>" to send results of (cmd) to another process.
+
+eg
+
+# echo <(echo $BASHPID)
+/dev/fd/63
+
+To read this file/file descriptor
+# cat <(echo $BASHPID)
+4111
+
+Comparision between command substitution & process substitution
+===============================================================
+
+# seq 10 > numbers.txt
+# wc -l numbers.txt
+10
+
+# wc -l <(seq 10)
+10
+
+# wc -l $(seq 10)
+errors

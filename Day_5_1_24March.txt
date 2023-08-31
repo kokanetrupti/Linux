@@ -1,0 +1,44 @@
+1. Create the following users, groups, and group memberships:
+-A group named admin
+-A user harry who belongs to admin as a secondary group
+-A user natasha who also belongs to admin as a secondary group
+-A user sarah who must have access to an interactive shell on the system, and who is not a member of admin
+-harry, natasha, and sarah should all have the password of "redhat@123?"
+
+# groupadd admin
+# useradd -G admin harry
+# useradd -G admin natasha
+# useradd sarah
+# passwd 
+
+
+
+
+2. Copy the ﬁle /etc/fstab to /var/tmp. Conﬁgure the permissions of /var/tmp/fstab so that: 
+-The ﬁle /var/tmp/fstab is owned by the root user.
+-The ﬁle /var/tmp/fstab belongs to the group root.
+-The ﬁle /var/tmp/fstab should not be executable by anyone.
+-The other  users are able to read and write /var/tmp/fstab.
+
+# cp -rfv /etc/fstab /var/tmp/
+# chmod a-x,o=rw /var/tmp/fstab
+
+Ownership:
+`
+1) User owner:
+
+# chown username file/dir
+
+2) Group Owner:
+```
+# chgrp groupname file/dir
+ACL: [ Access Control List]
+`
+
+# setfacl -m u:harry:rw- file/dir
+
+-m : modify
+
+# setfacl -m g:grp:rw- file/dir
+
+# getfacl file/dir

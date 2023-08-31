@@ -1,0 +1,43 @@
+#!/bin/bash
+function help(){
+        echo "-d DOMAIN: provide domain as target"
+        echo "-h/--help: Print help"
+}
+function main(){
+        while read sub;do
+                if host "$sub.$domain" &> /dev/null;then
+                        echo "$sub.$domain"
+                fi
+        done < $list
+}
+while true;do
+case $1 in
+        "-h"|"--help")
+                help
+                exit
+                ;;
+        "-d")
+                domain=$2
+                shift
+                if [ -z $domain ];then
+                        echo "Error: Domain is required"
+                        exit 127
+                fi
+                ;;
+        "-w")
+                list=$2
+                shift
+                if [ -z $list ];then
+                        echo "Error: Wordlist required"
+                        exit 127
+                fi
+                break
+                ;;
+        *)
+                echo "Error: use help -h/--help"
+                exit 127
+                ;;
+esac
+shift
+done
+main

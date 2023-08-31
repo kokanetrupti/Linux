@@ -1,0 +1,49 @@
+echo "MSG" : Print the msg on screen
+ls -a	:	Show all/Hidden files/Dirs
+
+mkdir .dirname	: Hidden dir
+touch .filename	: Hidden file
+
+history	: To show the history
+	!2000	: Exe history index number
+
+history -c : Clear/Clean the history
+
+tty: Print/show th console identity
+
+# echo "Hello" > /dev/tty1
+___
+
+ENV variable[SYSTEM Variable]
+``````
+
+Check:
+``
+# env
+
+Print:
+```
+# echo $SHELL
+---------
+history
+
+echo $HISTSIZE
+1000
+
+change the value of env variables but for current working env:
+----------
+export HISTSIZE=0
+_
+# cd /root/
+# ls -a
+.bash_history
+____
+
+# echo $HISTTIMEFORMAT
+
+%d : Day
+%m : month
+%y : year
+%T : Timestamp
+
+# export HISTTIMEFORMAT="%d-%m-%y %T "

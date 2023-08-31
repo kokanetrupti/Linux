@@ -1,0 +1,45 @@
+Remote management:
+```
+1) SSH [ Secure Shell ]
+```To access remote machine on CLI.
+
+On Server:
+`
+Package: openssh-server
+Port: 22
+service: ssh
+config: /etc/ssh/sshd_config
+
+# apt install openssh-server -y
+
+# systemctl status ssh
+-----------------
+On Client:
+`
+# apt install openssh-client -y
+
+
+Access:
+``
+# ssh user@x.x.x.x
+
+
+
+
+
+Root login enable:
+```````
+# vim /etc/ssh/sshd_config
+
+#PermitRootLogin prohibit-password
+
+Remove "#" to uncomment & edit
+
+PermitRootLogin yes
+
+:wq
+
+YOU MUST RESTART THE SERVICE
+
+# systemctl restart ssh
++++++++++++++++++++++++++++++++++++++

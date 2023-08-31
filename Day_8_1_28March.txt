@@ -1,0 +1,55 @@
+FTP: File Trasfer Protocol
+``````
+On server:
+``
+Package: vsftpd [very secure FTP]
+Service: vsftpd
+Port:	21
+DocumentRoot : /srv/ftp
+Config file: /etc/vsftpd.conf
+
+1) install:
+``
+# apt install vsftpd
+
+2) Service:
+``
+ systemctl: To handle/manage services in Linux. So you can perform some actions like start, stop, status, reload etc....
+
+# systemctl status vsftpd
+
+To check the open port:
+`````
+# lsof -i:21
+
+3) Config:
+`
+# vim /etc/vsftpd.conf
+
+anonymous_enable=NO
+
+anonymous_enable=YES
+
+:wq
+
+# systemctl restart vsftpd
+
+
+On Client:
+``
+Package: ftp
+
+# apt install ftp -y
+
+Access:
+`
+# ftp x.x.x.x [Server IP]
+
+name: ftp
+pass: ftp
+ftp> ls
+ftp> get filename [ To download a file from remote server]
+ftp> mget dir [ To download a dir from remote server]
+
+ftp> put filename [ Upload a filr on remote server]
+ftp> mput dir [ Upload a dir on remote server]
